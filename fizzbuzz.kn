@@ -1,0 +1,30 @@
+
+func Main()
+	var p : []int :: @new [101]int
+	for i(0,100,1)
+		do p[i] :: 0
+	end for
+	for i(0,100,3)
+		do p[i] :+ 1
+	end for
+	for i(0,100,5)
+		do p[i] :+ 2
+	end for
+
+	for i(1,100,1)
+		if(p[i] = 3)
+			do Kuin@Dbg("FizzBuzz")
+			continue i
+		end if
+		if(p[i] = 1)
+			do Kuin@Dbg("Fizz")
+			continue i
+		end if
+		if(p[i] = 2)
+			do Kuin@Dbg("Buzz")
+			continue i
+		end if
+		do Kuin@Dbg(i.ToStr())
+	end for
+	do Kuin@Stop()
+end func

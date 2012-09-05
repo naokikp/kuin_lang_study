@@ -1,0 +1,36 @@
+func Init(cfg : Kuin@CCfg)
+	do cfg.Title :: "Hello World"
+	do cfg.FullScr :: false
+	do cfg.PadNum :: 1
+	do cfg.WaitTime :: 60
+end func
+
+func Main()
+	var tex : D3D@CTex :: D3D@LoadTex("charset.png")
+	while(true)
+		do helloworld@DrawString(tex, "Hello World, Kuin ver 0.02 for Windows(64bit)", 16, 16)
+		do helloworld@DrawString(tex, "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~", 16, 64)
+		do Kuin@Act()
+		if(DI@PadBtn(0, DI@EPadBtn#A) = 1)
+			return
+		end if
+	end while
+end func
+
+func DrawString(tex : D3D@CTex, string : []char, posx : int, posy : int)
+	var mozi_w : int :: 20 { •¶Žš•   }
+	var mozi_h : int :: 30 { •¶Žš‚‚³ }
+	var rate   : int :: 1
+	var img_x : int
+	var img_y : int
+	var mozi_len : int :: string.Len()
+
+	for i(0, mozi_len -1, 1)
+		var code : int :: string[i] $ int
+		if(code >= #20)
+			do img_x :: mozi_w * ((code - #20) % #10)
+			do img_y :: mozi_h * ((code - #20) / #10)
+			do D3D@DrawTexStr(tex, img_x $ float, img_y $ float, mozi_w $ float, mozi_h $ float, (posx + mozi_w * i * rate) $ float, posy $ float, (mozi_w * rate) $ float, (mozi_h * rate) $ float, 1.0, 1.0, 1.0, 1.0)
+		end if
+	end for
+end func
