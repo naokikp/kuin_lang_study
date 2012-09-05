@@ -18,8 +18,8 @@ func Main()
 end func
 
 func DrawString(tex : D3D@CTex, string : []char, posx : int, posy : int)
-	var mozi_w : int :: 20 { •¶š•   }
-	var mozi_h : int :: 30 { •¶š‚‚³ }
+	var mozi_w : int :: 20 { æ–‡å­—å¹…   }
+	var mozi_h : int :: 30 { æ–‡å­—é«˜ã• }
 	var rate   : int :: 1
 	var img_x : int
 	var img_y : int
